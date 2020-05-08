@@ -1,24 +1,27 @@
-import React from 'react';
+import React,{ useState, useEffect } from 'react';
+import {Button} from 'antd';
 import logo from './logo.svg';
 import './App.css';
 
+
+// node.textContent  dom.innerText
+
 function App() {
+  const [arr, setArr] = useState(['1','2']);
+
+  useEffect(()=> {
+    const tuple = <T extends string[]>(...args: T) => args
+    console.log(tuple('1','2'));
+  },[])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    {
+      arr.map((item,index)=> {
+        return <div key={index}>{item}</div>
+      })
+    }
+    <Button type="primary">Primary</Button>
     </div>
   );
 }
